@@ -1,6 +1,6 @@
 .cart-page {
   max-width: 1440px;
-  margin: 2rem auto;
+  margin: 0 auto;
   margin-bottom: .5rem;
   padding: 3rem 1rem;
   display: grid;
@@ -471,6 +471,50 @@ shipping summary
   justify-content:flex-start;
   margin-bottom: 1rem;
   color: #666;
+}
+
+.shipping-item label {
+  cursor: pointer;
+  margin-left: 0.5rem; /* Add some space between radio and label */
+  display: flex;
+  align-items: center; /* Align text vertically with radio button */
+}
+
+.shipping-item input[type="radio"] {
+  /* You might want to style the radio button itself if default is not good */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  top: 1px; /* Adjust vertical alignment */
+}
+
+.shipping-item input[type="radio"]:checked {
+  border-color: var(--primary-dark);
+}
+
+.shipping-item input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-dark);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shipping-item input[type="radio"]:checked + label {
+  font-weight: 600;
+  color: var(--primary-dark); /* Highlight color */
 }
 
 @media (min-width: 769px) {

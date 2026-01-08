@@ -27,24 +27,75 @@
     margin: 0;
 }
 
-.filter-section li {
+.filter-section li { /* Base style for all list items */
     padding: 0.5rem 0;
-    cursor: pointer;
     transition: color 0.3s;
 }
 
-.filter-section li:hover {
+.filter-section li:hover .category-name-clickable {
     color: #000;
 }
 
-.filter-section li.active {
+/* Specific styling for main category items with expand/collapse functionality */
+.filter-section-category-item {
+  /* No direct padding here, handled by .category-header */
+}
+
+.filter-section-category-item .category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer; /* Cursor for the whole header area */
+  padding: 0.5rem 0; /* Padding applied here */
+}
+
+.filter-section-category-item .category-name-clickable {
+  flex-grow: 1; /* Allows the name to take up available space */
+  cursor: pointer; /* Explicitly set cursor for text part if needed */
+  transition: color 0.3s;
+}
+
+/* Active state for category name */
+.filter-section-category-item.active .category-name-clickable {
     font-weight: 600;
-    color: var(--background);
+    color: var(--background); /* Use a suitable primary color */
+}
+
+.expand-toggle-icon {
+  font-size: 0.8em; /* Smaller arrow */
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; /* Ensures the icon itself is clearly clickable */
+  color: #555; /* Neutral color */
+}
+
+.expand-toggle-icon.expanded {
+  transform: rotate(90deg); /* Rotate to point down when expanded */
 }
 
 .subcategory-list {
-    padding-left: 1rem;
+    padding-left: 1.5rem; /* Increased indentation for subcategories */
+    max-height: 0; /* Start collapsed */
+    overflow: hidden; /* Hide overflow content */
+    transition: max-height 0.3s ease-out, padding-top 0.3s ease-out; /* Smooth transition */
 }
+
+.subcategory-list.expanded { /* This class will be applied via JS if needed, or controlled by the parent element's state */
+    max-height: 500px; /* Adjust based on expected max subcategory items */
+    padding-top: 0.5rem; /* Add some padding when expanded */
+}
+
+.subcategory-list li {
+  font-size: 0.95rem; /* Slightly smaller font for subcategories */
+  padding: 0.3rem 0; /* Reduced padding for subcategory items */
+  cursor: pointer;
+}
+
+.subcategory-list li.active {
+    font-weight: 600;
+    color: var(--background); /* Use a suitable primary color */
+}
+
 
 .price-inputs {
     display: flex;

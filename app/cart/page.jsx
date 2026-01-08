@@ -112,7 +112,7 @@ function CartPage() {
                                 {loading ? <p>Loading...</p> : <>
                                     <div className='shipping-item'>
                                         <input
-                                            type="checkbox"
+                                            type="radio"
                                             id="inside"
                                             name="shippingMethod"
                                             value="inside"
@@ -123,7 +123,7 @@ function CartPage() {
                                     </div>
                                     <div className='shipping-item'>
                                         <input
-                                            type="checkbox"
+                                            type="radio"
                                             id="outside"
                                             name="shippingMethod"
                                             value="outside"

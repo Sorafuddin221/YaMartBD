@@ -14,6 +14,7 @@ function FiltersClientComponent({ categories, recentProducts }) {
   const [sort, setSort] = useState(searchParams.get('sort') || '');
   const [limit, setLimit] = useState(searchParams.get('limit') || '6');
   const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || '');
+  const [expandedCategory, setExpandedCategory] = useState('');
 
 
   const buildUrl = (newParams) => {
@@ -43,6 +44,8 @@ function FiltersClientComponent({ categories, recentProducts }) {
 
   const handleCategoryClick = (categoryName) => {
     setActiveCategory(categoryName); // Always set the clicked category as active
+    setExpandedCategory(categoryName); // Expand the clicked category's subcategories
+
     const newSearchParams = { category: categoryName };
     if (!categoryName) { // If 'All' category is clicked, remove subcategory filter
       newSearchParams.subcategory = '';
@@ -59,6 +62,14 @@ function FiltersClientComponent({ categories, recentProducts }) {
     router.push(buildUrl({ category: categoryName, subcategory: subCategoryName }));
   }
 
+
+  const handleToggleExpand = (categoryName) => {
+    // This function is no longer needed for expansion as handleCategoryClick will handle it.
+    // It's kept for potential future use or if the user wants separate toggle later.
+    setExpandedCategory(expandedCategory === categoryName ? '' : categoryName);
+  };
+
+  // console.log('Current expandedCategory outside render:', expandedCategory);
 
   return (
     <div className="filter-section">
@@ -98,34 +109,55 @@ function FiltersClientComponent({ categories, recentProducts }) {
       <h3 className="filter-heading">Categories</h3>
       <ul>
         <li
-          onClick={() => handleCategoryClick('')}
-          className={!searchParams.get('category') ? 'active' : ''}
+          className={`filter-section-category-item ${!searchParams.get('category') ? 'active' : ''}`}
+          onClick={() => {
+            handleCategoryClick('');
+            setExpandedCategory(''); // Collapse all when 'All' is clicked
+          }}
         >
-          All
+          <span className="category-name-clickable">All</span>
         </li>
-        {categories.filter(cat => !cat.parent).map((cat) => (
+        {categories.filter(cat => !cat.parent).map((cat) => {
+          // console.log(`Rendering category: ${cat.name}, expandedCategory: ${expandedCategory}, Condition: ${expandedCategory === cat.name}`);
+          return (
           <React.Fragment key={cat._id}>
             <li
-              onClick={() => handleCategoryClick(cat.name)}
-              className={searchParams.get('category') === cat.name && !searchParams.get('subcategory') ? 'active' : ''}
+              className={`filter-section-category-item ${searchParams.get('category') === cat.name && !searchParams.get('subcategory') ? 'active' : ''}`}
             >
-              {cat.name}
-            </li>
-            {activeCategory === cat.name && cat.subcategories && cat.subcategories.length > 0 && (
-              <ul className="subcategory-list">
-                {cat.subcategories.map((subcat) => (
-                  <li
-                    key={subcat._id}
-                    onClick={() => handleSubCategoryClick(cat.name, subcat.name)}
-                    className={searchParams.get('subcategory') === subcat.name ? 'active' : ''}
+              <div className="category-header" onClick={() => handleCategoryClick(cat.name)}> {/* Entire header is now clickable for filtering and expanding */}
+                <span
+                  className="category-name-clickable"
+                >
+                  {cat.name}
+                </span>
+                {cat.subcategories && cat.subcategories.length > 0 && (
+                  <span
+                    className={`expand-toggle-icon ${expandedCategory === cat.name ? 'expanded' : ''}`}
+                    // onClick handler removed as main click now expands
                   >
-                    {subcat.name}
-                  </li>
-                ))}
-              </ul>
+                    &#9658; {/* Right arrow HTML entity */}
+                  </span>
+                )}
+              </div>
+            </li>
+            {expandedCategory === cat.name && cat.subcategories && cat.subcategories.length > 0 && (
+              <>
+                {/* {console.log(`Subcategory list for ${cat.name} is rendered: ${expandedCategory === cat.name}`)} */}
+                <ul className={`subcategory-list ${expandedCategory === cat.name ? 'expanded' : ''}`}>
+                  {cat.subcategories.map((subcat) => (
+                    <li
+                      key={subcat._id}
+                      onClick={() => handleSubCategoryClick(cat.name, subcat.name)}
+                      className={searchParams.get('subcategory') === subcat.name ? 'active' : ''}
+                    >
+                      {subcat.name}
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
           </React.Fragment>
-        ))}
+        )})}
       </ul>
 
       {recentProducts && recentProducts.length > 0 && (
