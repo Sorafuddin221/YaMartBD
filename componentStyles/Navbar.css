@@ -1,0 +1,1206 @@
+.topbar-wrapper {
+    width: 100%;
+    padding-left: 3rem; /* equivalent to px-5 */
+    padding-right: 3rem; /* equivalent to px-5 */
+    margin-right: auto;
+    margin-left: auto;
+    display: none; /* equivalent to d-none */
+    border-bottom: 1px solid #dee2e6; /* default bootstrap border-bottom */
+}
+ 
+
+@media (min-width: 992px) { /* equivalent to d-lg-block */
+    .topbar-wrapper {
+        display: block;
+    }
+    
+}
+
+.topbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 0; /* from gx-0 */
+    margin-left: 0;  /* from gx-0 */
+}
+
+/* This targets direct children that were originally Bootstrap columns */
+.topbar-row > div {
+    padding-right: 0; /* from gx-0 */
+    padding-left: 0;  /* from gx-0 */
+}
+
+.topbar-col-left {
+    text-align: center; /* default for small screens */
+}
+
+@media (min-width: 992px) { /* for large screens */
+    .topbar-col-left {
+        flex: 0 0 auto;
+        width: 33.33333333%; /* equivalent to col-lg-4 */
+        text-align: left; /* equivalent to text-lg-start */
+        margin-bottom: 0; /* equivalent to mb-lg-0 */
+    }
+}
+
+.topbar-links-wrapper {
+    display: inline-flex;
+    align-items: center;
+    height: 45px;
+    gap: 0.5rem; /* equivalent to me-2/mx-2 spacing */
+}
+
+.topbar-links-wrapper .topbar-link {
+    color: #6c757d; /* equivalent to text-muted */
+    transition: 0.5s; /* from the original style.css .topbar a */
+    text-decoration: none;
+}
+
+.topbar-links-wrapper .topbar-link:hover {
+    color: var(--bs-secondary) !important;
+}
+
+.topbar-links-wrapper .topbar-divider {
+    color: #6c757d; /* Assuming the divider is also muted */
+}
+
+.topbar-col-middle {
+    text-align: center; /* Fallback for non-flex content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 992px) { /* for large screens */
+    .topbar-col-middle {
+        flex: 0 0 auto;
+        width: 33.33333333%; /* equivalent to col-lg-4 */
+    }
+}
+
+.topbar-col-middle .topbar-call-text {
+    color: #212529; /* equivalent to text-dark */
+}
+
+.topbar-col-middle .topbar-call-number {
+    color: #6c757d; /* equivalent to text-muted */
+    text-decoration: none; /* remove underline from a tag */
+}
+
+.topbar-col-right {
+    text-align: center; /* default for small screens */
+}
+
+@media (min-width: 992px) { /* for large screens */
+    .topbar-col-right {
+        flex: 0 0 auto;
+        width: 33.33333333%; /* equivalent to col-lg-4 */
+        text-align: right; /* equivalent to text-lg-end */
+    }
+}
+
+.topbar-dropdown {
+    position: relative;
+    padding:0 5px;
+}
+
+.topbar-dropdown-toggle {
+    color: #6c757d; /* equivalent to text-muted */
+    text-decoration: none; /* remove underline from a tag */
+    white-space: nowrap; /* equivalent to dropdown-toggle */
+}
+
+.topbar-dropdown-toggle::after {
+    border: none;
+    content: "\f107"; /* Font Awesome chevron-down */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: .255em; /* from Bootstrap's dropdown-toggle */
+}
+
+/* From .topbar a:hover in style.css */
+.topbar-dropdown-toggle:hover {
+    color: var(--bs-secondary) !important;
+}
+
+.topbar-dropdown-text {
+    color: #6c757d;
+}
+
+.topbar-dropdown-menu {
+    position: absolute;
+    z-index: 10001;
+    display: none; /* Hidden by default */
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529; /* A common dark text color */
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 10px; /* from template */
+    top: 100%; /* Position below the toggle */
+    left: 0;
+}
+
+/* Need to add show/hide logic, likely via JS or :hover */
+.topbar-dropdown:hover .topbar-dropdown-menu {
+    display: block; /* Show on hover for simplicity */
+}
+
+.topbar-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529; /* A common dark text color */
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none; /* Ensure no underline */
+}
+
+.topbar-dropdown-item:hover,
+.topbar-dropdown-item:focus {
+    color: #1e2125; /* Darker grey on hover/focus */
+    background-color: #e9ecef; /* Light grey background */
+}
+
+/* If you need an active state, define it here */
+.topbar-dropdown-item.active {
+    color: #fff;
+    background-color: #f28b00; /* Primary color */
+}
+
+.main-header-wrapper {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    display: none; /* hidden by default */
+}
+
+@media (min-width: 992px) { /* equivalent to d-lg-block */
+    .main-header-wrapper {
+        display: block;
+    }
+}
+
+.main-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center; /* equivalent to text-center */
+    margin-right: 0; /* from gx-0 */
+    margin-left: 0;  /* from gx-0 */
+}
+
+.main-header-row > div { /* This applies to direct children, like .col-md-4 */
+    padding-right: 0; /* from gx-0 */
+    padding-left: 0;  /* from gx-0 */
+}
+
+.main-header-col-left {
+    text-align: center; /* default for small screens */
+    flex: 0 0 auto;
+    width: 100%; /* default to full width for small screens */
+}
+
+@media (min-width: 768px) { /* for medium screens */
+    .main-header-col-left {
+        width: 33.33333333%; /* equivalent to col-md-4 */
+    }
+}
+
+@media (min-width: 992px) { /* for large screens */
+    .main-header-col-left {
+        width: 25%; /* equivalent to col-lg-3 */
+        text-align: left; /* equivalent to text-lg-start */
+    }
+}
+
+.main-header-brand-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-header-brand {
+    padding: 0; /* equivalent to p-0 */
+    margin-right: 1rem; /* from navbar-brand */
+    font-size: 1.25rem; /* from navbar-brand */
+    white-space: nowrap; /* from navbar-brand */
+    text-decoration: none; /* remove underline from a tag */
+}
+
+.main-header-brand {
+    padding: 0; /* equivalent to p-0 */
+    margin-right: 1rem; /* from navbar-brand */
+    font-size: 1.25rem; /* from navbar-brand */
+    white-space: nowrap; /* from navbar-brand */
+    text-decoration: none; /* remove underline from a tag */
+}
+
+.main-header-title {
+    font-size: 3rem; /* equivalent to display-5 for larger screens */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #f28b00;
+    margin: 0;
+}
+
+.main-header-icon {
+    color: #f92400;
+    margin-right: 0.5rem;
+}
+
+.main-header-col-center {
+    text-align: center;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .main-header-col-center {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-header-col-center {
+        width: 50%;
+    }
+}
+
+.main-header-search-container {
+    position: relative;
+    padding-left: 1.5rem;
+    z-index: 100; /* Increased z-index */
+}
+
+.main-header-search-box {
+    display: flex;
+    border: 1px solid #dee2e6;
+    border-radius: 50rem;
+    position: relative; /* important for positioning dropdown inside */
+    z-index: 1; /* Ensure search box content is above dropdown */
+    background-color: #fff; /* Ensure background is solid for overlapping content */
+}
+
+.main-header-search-input {
+    display: block;
+    width: 100%;
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 50rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.main-header-search-input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.main-header-search-input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+.main-header-search-select {
+    display: block;
+    width: 200px;
+    padding: 1rem 2.25rem 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 0;
+    border-left: 1px solid #dee2e6;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.main-header-search-select:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+.main-header-search-button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f28b00;
+    border: 0;
+    border-color: #f28b00;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border-radius: 50rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.main-header-search-button:hover {
+    color: #000;
+    background-color: #e68a00;
+    border-color: #e68a00;
+}
+
+.main-header-search-button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(242,139,0,.5);
+}
+
+.main-header-search-icon {
+    /* Styles for the Font Awesome icon */
+}
+
+.main-header-col-right {
+    text-align: center;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .main-header-col-right {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-header-col-right {
+        width: 25%;
+    }
+}
+
+.main-header-actions-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-header-action-link {
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.main-header-action-link:hover {
+    color: var(--bs-secondary);
+}
+
+.main-header-action-link-icon-wrapper {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    object-fit: cover; /* To make sure the image covers the area nicely */
+}
+
+.mobile-profile-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 24px; /* Ensure it's the correct size */
+    height: 24px; /* Ensure it's the correct size */
+}
+
+.main-header-action-link-text {
+    margin-left: 0.5rem;
+    color: #6c757d; /* Assuming a muted text color like other links */
+    font-weight: 500;
+}
+
+.main-header-cart-price {
+    color: #212529;
+    margin-left: 0.5rem;
+}
+
+.navbar-wrapper {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f28b00; /* Apply background to the whole navbar-wrapper */
+    position: sticky; /* Make the element sticky */
+    top: 0; /* Stick it to the top of the viewport */
+    z-index: 3; /* Ensure it stays above other content, a common z-index for fixed/sticky navs */
+}
+
+.navbar-main-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    padding-left: 3rem; /* equivalent to px-5 */
+    padding-right: 3rem; /* equivalent to px-5 */
+    align-items: center;
+}
+
+.navbar-main-links-column {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .navbar-main-links-column {
+        width: 75%; /* 75% width for menu items on large screens */
+    }
+}
+
+.navbar-main-links-nav {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+    @media (min-width: 992px) {
+        .navbar-main-links-nav {
+            flex-wrap: nowrap;
+        }
+        .navbar-main-links-nav .navbar-nav {
+            display: flex;
+            flex-grow: 1;
+            /* Added to justify the menu items to the start, if needed, or let them space out naturally */
+            justify-content: flex-start;
+        }
+    }
+.navbar-main-links-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: box-shadow .15s ease-in-out;
+    margin-left: auto;
+    color: rgba(0,0,0,.55);
+    border-color: rgba(0,0,0,.1);
+}
+
+.navbar-main-links-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem;
+}
+
+.navbar-main-links-collapse {
+    display: none;
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.navbar-main-links-collapse.open {
+    display: block;
+}
+
+    @media (min-width: 992px) {
+        .navbar-main-links-collapse {
+            display: flex !important;
+            flex-basis: auto;
+            justify-content: flex-end; /* Added to push content to the right */
+        }
+        .navbar-main-links-toggler {
+            display: none;
+        }
+        .d-lg-none-menu-item {
+            display: none !important; /* Hide on large devices */
+        }
+    }
+.navbar-main-links-dropdown-toggle {
+    display: block;
+    padding: 18px 15px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    color: hsla(0,0%,100%,.55);
+    transition: .5s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-main-links-dropdown-toggle:hover {
+    color: #fff;
+}
+
+.navbar-main-links-dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: .255em;
+}
+
+.navbar-main-links-dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+.navbar-main-links-dropdown:hover .navbar-main-links-dropdown-menu {
+    display: block;
+}
+
+.navbar-main-link {
+    display: block;
+    padding: 18px 15px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    color: hsla(0,0%,100%,.55);
+    transition: .5s;
+    text-decoration: none;
+}
+
+.navbar-main-link:hover {
+    color: #fff;
+}
+
+.navbar-mobile-categories-dropdown {
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .navbar-mobile-categories-dropdown {
+        display: none;
+    }
+}
+
+.navbar-contact-button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f92400;
+    border: 1px solid #f92400;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: 50rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+    .navbar-contact-button {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-contact-button {
+        margin-bottom: 1rem;
+    }
+}
+
+.navbar-contact-button:hover {
+    color: #fff;
+    background-color: #e62200;
+    border-color: #e62200;
+}
+
+.navbar-contact-button-icon {
+    margin-right: 0.5rem;
+}
+
+.navbar-mobile-brand {
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .navbar-mobile-brand {
+        display: none;
+    }
+}
+
+.navbar-mobile-brand-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #f92400;
+    margin: 0;
+}
+
+.navbar-mobile-brand-icon {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+/* Custom styles for nav menu items */
+.navbar-main-links-nav .nav-item .nav-link {
+    padding: 18px 15px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    color: hsla(0,0%,100%,.55); /* Default text color */
+    transition: .5s;
+}
+
+.navbar-main-links-nav .nav-item .nav-link:hover,
+.navbar-main-links-nav .nav-item .nav-link.active {
+    color: #fff; /* White color on hover/active */
+}
+
+@media (min-width: 992px) {
+    .mobile-category-dropdown {
+        display: none !important;
+    }
+}
+
+/* Custom styles for the All Categories section (large screen) */
+.navbar-categories-column .navbar-toggler {
+    
+    color: white;
+    border-radius: 0;
+}
+
+.navbar-categories-column .navbar-toggler:hover {
+    color: var(--primary-dark);
+}
+
+
+/* Specific styling for dropdown menus within the navbar (both main and mobile category) */
+.navbar-main-links-dropdown-menu,
+.dropdown-menu {
+    border-radius: .25rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+}
+
+/* Ensure dropdown items match template's style */
+.dropdown-item {
+    color: #212529; /* Dark text color for dropdown items */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #1e2125;
+    background-color: #e9ecef;
+}
+
+/* Styles for mobile "My Dashboard" collapsible sub-menu */
+.navbar-main-links-sub-menu {
+    display: none; /* Hidden by default */
+    padding-left: 1.5rem; /* Indent sub-items */
+    background-color: #f8f9fa; /* A subtle background for sub-items */
+    border-top: 1px solid rgba(0,0,0,.05);
+}
+
+.navbar-main-links-sub-menu.open {
+    display: block; /* Show when 'open' class is present */
+}
+
+.navbar-main-links-sub-menu .dropdown-item {
+    color: #212529; /* Dark text for sub-items */
+    padding: 0.75rem 1rem; /* Adjust padding */
+    display: block; /* Ensure they take full width */
+    text-decoration: none;
+}
+
+.navbar-main-links-sub-menu .dropdown-item:hover {
+    background-color: #e9ecef; /* Highlight on hover */
+}
+
+/* Styles for mobile-topbar-content */
+.mobile-topbar-content {
+    background-color: #f28b00; /* Use a color from the theme, e.g., the navbar background */
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: sticky; /* Make the element sticky */
+    top: 0; /* Stick it to the top of the viewport */
+    z-index: 1030; /* Ensure it stays above other content and above the main navbar */
+}
+
+.mobile-topbar-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.mobile-topbar-group:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.mobile-topbar-group.mobile-topbar-links .topbar-link,
+.mobile-topbar-group.mobile-topbar-call .topbar-call-number {
+    color: #fff;
+}
+
+.mobile-topbar-group.mobile-topbar-links .topbar-divider {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mobile-topbar-group.mobile-topbar-call small {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Styles for mobile-topbar-collapsible-menu (to make it a floating dropdown like desktop) */
+.mobile-topbar-collapsible-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 10px;
+    top: 100%;
+    right: 0;
+    left: auto;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+}
+
+.mobile-topbar-collapsible-menu.open {
+    display: block;
+}
+
+.mobile-topbar-collapsible-menu .topbar-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+}
+
+.mobile-topbar-collapsible-menu .topbar-dropdown-item:hover,
+.mobile-topbar-collapsible-menu .topbar-dropdown-item:focus {
+    color: #1e2125;
+    background-color: #e9ecef;
+}
+
+
+
+
+.category-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 10px;
+    padding: 0.5rem 0;
+}
+
+.category-dropdown-content.open {
+    display: block;
+}
+
+.categories-bars {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.categories-bars-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categories-bars-item a {
+    text-decoration: none;
+    color: var(--foreground);
+    display: block;
+    flex-grow: 1;
+}
+
+.categories-bars-item span {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.categories-bars-item:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Styling for individual mobile nav icons */
+.mobile-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.mobile-nav-icons .nav-link svg,
+.mobile-nav-icon svg {
+    color: white;
+    font-size: 1.25rem;
+    vertical-align: middle;
+    display: block;
+    margin: auto;
+}
+
+/* Ensure Image within mobile-nav-icon wrapper is also centered/sized correctly */
+.mobile-nav-icon img {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+/* Mobile Search Bar Specific Styles */
+.mobile-search-bar-expanded {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #f28b00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.mobile-search-form {
+    display: flex;
+    flex-grow: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 50rem;
+    background-color: #fff;
+    position: relative;
+}
+
+.mobile-search-input {
+    flex-grow: 1;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 50rem 0 0 50rem;
+    outline: none;
+}
+
+.mobile-search-select {
+    width: auto;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-left: 1px solid #dee2e6;
+    border-radius: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.mobile-search-button {
+    background-color: #f28b00;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 50rem 50rem 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-search-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.mobile-search-suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+/* Ensure mobile-topbar-content is hidden on large screens */
+@media (min-width: 992px) {
+    .mobile-topbar-content {
+        display: none !important;
+    }
+}
+
+/* Custom styles for mobile-nav-icons-container to replace Bootstrap classes */
+.mobile-nav-icons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 15px; /* Added gap between icons */
+}
+
+@media (min-width: 992px) {
+    .mobile-nav-icons-container {
+        display: none !important;
+    }
+}
+
+.mobile-nav-cart-icon-wrapper {
+    position: relative;
+    /* Inherit flex from mobile-nav-icon for consistent centering if needed */
+}
+
+.mobile-nav-cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50rem;
+    padding: 0.25em 0.6em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+/* Adjustments for the main search suggestions dropdown to prevent it from breaking layout */
+/* On large screens, the dropdown should align with the main-header-search-box */
+@media (min-width: 992px) {
+    .main-header-search-container .search-suggestions-dropdown {
+        width: 100%; /* Ensure it takes full width of its positioned parent */
+        left: 0; /* Align perfectly to the left edge of parent */
+        right: 0; /* Align perfectly to the right edge of parent */
+        min-width: 100%; /* Explicitly ensure it's at least 100% */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+}
+.suggestion-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.75rem;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.suggestion-details {  
+     flex-grow: 1; 
+}
+
+.suggestion-name { 
+     margin: 0;
+      font-weight: 500; 
+       font-size: 0.95rem;  
+}
+.suggestion-price { 
+    margin: 0; 
+    font-size: 0.85rem;
+     color: #6c757d; 
+}
+.loading-text,
+.no-results-text { 
+    padding: 0.75rem 1rem;  
+     text-align: center;
+     color: #6c757d;
+}
+
+ .main-header-search-container {  
+     position: relative; 
+      z-index: 10; 
+ }
+ .main-header-search-box {  
+
+     position: relative;
+      z-index: 1;
+       background-color: #fff;
+ }
+.main-header-search-box .main-header-search-select,
+ .main-header-search-box .main-header-search-button {
+     z-index: 2;
+ }
+ .search-suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Individual suggestion item */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.suggestion-item:hover {
+    background-color: #f8f9fa;
+}
+/* Animation for cart icon when item is added */
+.cart-icon-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Styles for the cart badge on large screens */
+.main-header-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50rem;
+    padding: 0.25em 0.6em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+/* Ensure the icon wrapper is relative for badge positioning */
+.main-header-action-link-icon-wrapper {
+    position: relative;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-main-links-collapse.open .nav-item .nav-link {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-main-links-collapse.open .nav-item .nav-link {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+.navbar-nav .nav-item{
+    padding: 10px;
+}

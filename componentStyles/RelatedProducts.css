@@ -1,0 +1,21 @@
+/* Add styling for RelatedProducts component here */
+.related-products-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--background);
+    border-top: 1px solid var(--border-color);
+}
+
+.related-products-container h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--foreground);
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}

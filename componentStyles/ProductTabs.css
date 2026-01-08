@@ -1,0 +1,76 @@
+
+.product-tabs-container {
+    width: 80vw;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.product-tabs-heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.product-tabs-subheading {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.product-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600; /* Bolder font */
+    cursor: pointer;
+    border: none; /* No border */
+    border-bottom: 3px solid transparent; /* Placeholder for active indicator */
+    background-color: transparent; /* No background */
+    color: #555; /* Dark grey for better readability */
+    transition: all 0.3s ease;
+    margin: 0 0.5rem; /* Spacing between tabs */
+}
+
+.tab-btn:hover {
+    color: #000; /* Black on hover for strong contrast */
+}
+
+.tab-btn.active {
+    color: #000; /* Black for active tab */
+    border-bottom: 3px solid var(--primary-main); /* Active indicator */
+}
+
+.product-tabs-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .product-tabs-container {
+        width: 95vw;
+    }
+
+    .product-tabs {
+        flex-direction: column;
+    }
+
+    .product-tabs-heading {
+        font-size: 2rem;
+    }
+
+    .product-tabs-subheading {
+        font-size: 1rem;
+    }
+
+    .tab-btn {
+        font-size: 0.9rem;
+    }
+}

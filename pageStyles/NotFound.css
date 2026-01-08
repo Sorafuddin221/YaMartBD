@@ -1,0 +1,50 @@
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.not-found-content {
+  max-width: 600px;
+}
+
+.not-found-title {
+  font-size: 8rem;
+  font-weight: 800;
+  color: var(--primary-main);
+  margin: 0;
+  line-height: 1;
+}
+
+.not-found-message {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.not-found-sub-message {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.not-found-home-link {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary-main);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.not-found-home-link:hover {
+  background-color: var(--primary-dark);
+}

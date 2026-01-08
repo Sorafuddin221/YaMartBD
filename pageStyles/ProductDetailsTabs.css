@@ -1,0 +1,48 @@
+
+.product-details-tabs {
+    width: 80vw;
+    margin: 4rem auto;
+}
+
+.tab-headers {
+    display: flex;
+    border-bottom: 2px solid #eaeaea;
+    margin-bottom: 2rem;
+}
+
+.tab-header {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #555;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab-header:hover {
+    color: #000;
+}
+
+.tab-header.active {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+.tab-content {
+    padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .product-details-tabs {
+        width: 95vw;
+    }
+
+    .tab-header {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

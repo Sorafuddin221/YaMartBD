@@ -1,0 +1,86 @@
+.customer-query-container {
+    padding: 2rem 0;
+}
+
+.customer-query-container h3, .customer-query-container h4 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.queries-list {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.query-item {
+    padding: 1.5rem;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.query-item p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.query-name {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.query-item form {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.query-item textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.query-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.query-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    min-height: 120px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.query-form button, .query-item button {
+    padding: 0.8rem 1.5rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+
+.query-form button:hover, .query-item button:hover {
+    background-color: #333;
+}
+
+.query-form button:disabled, .query-item button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
