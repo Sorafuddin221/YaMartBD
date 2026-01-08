@@ -33,7 +33,7 @@
 }
 
 .filter-section li:hover .category-name-clickable {
-    color: #000;
+    color: #ffffff;
 }
 
 /* Specific styling for main category items with expand/collapse functionality */
@@ -46,7 +46,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer; /* Cursor for the whole header area */
-  padding: 0.5rem 0; /* Padding applied here */
+  padding: 0.4rem .4rem; /* Padding applied here */
 }
 
 .filter-section-category-item .category-name-clickable {
@@ -66,7 +66,7 @@
   margin-left: 0.5rem;
   transition: transform 0.2s ease-in-out;
   cursor: pointer; /* Ensures the icon itself is clearly clickable */
-  color: #555; /* Neutral color */
+  color: var(--primary-light); /* Neutral color */
 }
 
 .expand-toggle-icon.expanded {
@@ -82,13 +82,15 @@
 
 .subcategory-list.expanded { /* This class will be applied via JS if needed, or controlled by the parent element's state */
     max-height: 500px; /* Adjust based on expected max subcategory items */
-    padding-top: 0.5rem; /* Add some padding when expanded */
+   
 }
 
 .subcategory-list li {
   font-size: 0.95rem; /* Slightly smaller font for subcategories */
-  padding: 0.3rem 0; /* Reduced padding for subcategory items */
+  padding: 0.3rem .3rem; /* Reduced padding for subcategory items */
   cursor: pointer;
+  margin-left: .5rem;
+  border: 1px solid #3333;
 }
 
 .subcategory-list li.active {

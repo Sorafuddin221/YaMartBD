@@ -38,13 +38,18 @@
 }
 
 .filter-section li:hover {
-  background-color: #efefef;
+  background-color: var(--primary-main);
+  color:var(--primary-light);
 }
 
 .filter-section li.active {
-  background-color: var(--primary-dark);
-  color: white;
+  background-color: var(--primary-main);
+  color:var(--primary-light);
   font-weight: bold;
+}
+.filter-section li.active:hover {
+ background-color: var(--primary-dark);
+ 
 }
 
 .products-section {
