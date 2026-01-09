@@ -40,6 +40,7 @@ function Footer() {
             <li ><Link className='footer-menu-item' href="/contact">Contact Us</Link></li>
             <li ><Link className='footer-menu-item' href="/privacy-policy">Privacy Policy</Link></li>
             <li ><Link className='footer-menu-item' href="/terms-and-conditions">Terms & Conditions</Link></li>
+            <li ><Link className='footer-menu-item' href="/return-and-refund">Return and Refund</Link></li>
           </ul>
         </div>
         {/*section 4*/}

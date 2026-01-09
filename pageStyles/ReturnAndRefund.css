@@ -1,0 +1,80 @@
+.return-and-refund-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.return-and-refund-content h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.return-and-refund-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.return-and-refund-content .last-updated {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.return-and-refund-content ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.return-and-refund-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+.return-and-refund-content ul ul {
+
+  list-style-type: circle;
+
+  margin-left: 2rem;
+
+  margin-top: 0.5rem;
+
+}
+
+
+
+.exchange-form-button-container {
+
+  margin-top: 1rem;
+
+  margin-bottom: 1rem;
+
+}
+
+
+
+.cta-button {
+
+  background-color: #007bff;
+
+  color: white;
+
+  padding: 10px 20px;
+
+  border-radius: 5px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  display: inline-block;
+
+}
+
+
+
+.cta-button:hover {
+
+  background-color: #0056b3;
+
+}
