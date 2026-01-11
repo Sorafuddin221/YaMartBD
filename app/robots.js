@@ -7,7 +7,16 @@ export default function robots() {
     rules: [
       {
         userAgent: '*',
-        disallow: '/admin/',
+        disallow: [
+          '/admin/',
+          '/cart/',
+          '/profile/',
+          '/orders/',
+          '/shipping/',
+          '/payment/',
+          '/login/',
+          '/register/',
+        ],
       },
     ],
     sitemap: `${URL}/sitemap.xml`,

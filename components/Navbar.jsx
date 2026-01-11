@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearErrors, getAllCategories } from "../features/category/categorySlice";
 import { logout } from '@/features/user/userSlice';
@@ -136,8 +137,8 @@ const Navbar = ({ siteLogoUrl }) => {
     const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
     const topBarLinks = [
-        { href: "#", text: "Help" },
-        { href: "#", text: "Support" },
+        { href: "help", text: "Help" },
+        { href: "support", text: "Support" },
         { href: "/contact", text: "Contact" },
     ];
     const searchCategories = [
@@ -148,11 +149,67 @@ const Navbar = ({ siteLogoUrl }) => {
         { value: "Category 4", label: "Category 4" },
     ];
     const [selectedSearchCategory, setSelectedSearchCategory] = useState(searchCategories[0]);
-    const navLinks = [
-        { href: "/", text: "Home" },
-        { href: "/products", text: "Shop" },
-        { href: "/contact", text: "Contact" },
-    ];
+    const [navLinks, setNavLinks] = useState([]);
+
+    const [activeLinkIndex, setActiveLinkIndex] = useState(null);
+
+    useEffect(() => {
+        const storedIndex = sessionStorage.getItem('activeLinkIndex');
+        if (storedIndex !== null) {
+            setActiveLinkIndex(parseInt(storedIndex, 10));
+        }
+    }, []);
+
+    const handleLinkClick = (index) => {
+        setActiveLinkIndex(index);
+        sessionStorage.setItem('activeLinkIndex', index);
+    };
+
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const dropdownRef = useRef(null);
+
+    const handleDropdownToggle = (index) => {
+        setOpenDropdown(openDropdown === index ? null : index);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setOpenDropdown(null);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    useEffect(() => {
+        const fetchNavItems = async () => {
+            try {
+                const { data } = await axios.get('/api/admin/navitems');
+                const formattedNavLinks = data
+                    .filter(item => !item.parent)
+                    .sort((a, b) => a.order - b.order)
+                    .map((item, index) => {
+                        const children = data
+                            .filter(child => child.parent === item._id)
+                            .sort((a, b) => a.order - b.order)
+                            .map(child => ({ href: child.path, text: child.name }));
+                        return {
+                            href: item.path,
+                            text: item.name,
+                            dropdown: children.length > 0 ? children : null,
+                        };
+                    });
+                setNavLinks(formattedNavLinks);
+            } catch (error) {
+                console.error('Error fetching nav items:', error);
+            }
+        };
+        fetchNavItems();
+    }, []);
 
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const toggleAllCat = () => setIsAllCatOpen(!isAllCatOpen);
@@ -183,6 +240,8 @@ const Navbar = ({ siteLogoUrl }) => {
     }, [dispatch, error]);
 
     const router = useRouter();
+    const pathname = usePathname();
+
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         let url = `/products`;
@@ -246,27 +305,30 @@ const Navbar = ({ siteLogoUrl }) => {
                                 </div>
                             </div>
                             {isClient &&
-                            <div className="topbar-dropdown">
-                                <a href="#" className="topbar-dropdown-toggle" data-bs-toggle="dropdown"><small className="topbar-dropdown-text"><i
-                                    className="fa fa-home me-2"></i> My Dashboard</small></a>
-                                <div className="topbar-dropdown-menu">
-                                    {isAuthenticated ? (
-                                        <>
-                                            {user.role === "admin" && (
-                                                <Link href="/admin/dashboard" className="topbar-dropdown-item">Admin Dashboard</Link>
-                                            )}
-                                            <Link href="/profile" className="topbar-dropdown-item">My Account</Link>
-                                            <Link href="/orders/user" className="topbar-dropdown-item">My Orders</Link>
-                                            <a href="#" className="topbar-dropdown-item" onClick={() => dispatch(logout())}>Log Out</a>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Link href="/login" className="topbar-dropdown-item">Login</Link>
-                                            <Link href="/register" className="topbar-dropdown-item">Register</Link>
-                                        </>
-                                    )}
+                                <div className="topbar-dropdown">
+                                    <a href="#" className="topbar-dropdown-toggle" data-bs-toggle="dropdown"><small className="topbar-dropdown-text"><i
+                                        className="fa fa-home me-2"></i> My Dashboard</small></a>
+                                    <div className="topbar-dropdown-menu">
+                                        {isAuthenticated ? (
+                                            <>
+                                                {user.role === "admin" && (
+                                                    <>
+                                                        <Link href="/admin/dashboard" className="topbar-dropdown-item">Admin Dashboard</Link>
+
+                                                    </>
+                                                )}
+                                                <Link href="/profile" className="topbar-dropdown-item">My Account</Link>
+                                                <Link href="/orders/user" className="topbar-dropdown-item">My Orders</Link>
+                                                <a href="#" className="topbar-dropdown-item" onClick={() => dispatch(logout())}>Log Out</a>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Link href="/login" className="topbar-dropdown-item">Login</Link>
+                                                <Link href="/register" className="topbar-dropdown-item">Register</Link>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
                             }
                         </div>
                     </div>
@@ -397,7 +459,7 @@ const Navbar = ({ siteLogoUrl }) => {
             <div className="mobile-topbar-content d-lg-none">
 
                 <div className="mobile-topbar-group mobile-topbar-call">
-                    <small className="topbar-call-text">Call Us:</small>
+                    <small className="topbar-call-text">Call:</small>
                     <a href="#" className="topbar-call-number">01516143874</a>
                 </div>
                 <div className="mobile-topbar-group mobile-topbar-actions">
@@ -414,28 +476,28 @@ const Navbar = ({ siteLogoUrl }) => {
                     </div>
                     {/* My Dashboard Dropdown for mobile topbar */}
                     {isClient &&
-                    <div className="topbar-dropdown" ref={dashboardDropdownRef}>
-                        <a href="#" className="topbar-dropdown-toggle" onClick={(e) => { e.preventDefault(); setIsMyDashboardMobileOpen(!isMyDashboardMobileOpen); }}>
-                            <small className="topbar-dropdown-text"><i className="fa fa-home me-2"></i>My Dashboard</small>
-                        </a>
-                        <div className={`mobile-topbar-collapsible-menu ${isMyDashboardMobileOpen ? 'open' : ''}`}>
-                            {isAuthenticated ? (
-                                <>
-                                    {user.role === "admin" && (
-                                        <Link href="/admin/dashboard" className="topbar-dropdown-item">Admin Dashboard</Link>
-                                    )}
-                                    <Link href="/profile" className="topbar-dropdown-item">My Account</Link>
-                                    <Link href="/orders/user" className="topbar-dropdown-item">My Orders</Link>
-                                    <a href="#" className="topbar-dropdown-item" onClick={() => dispatch(logout())}>Log Out</a>
-                                </>
-                            ) : (
-                                <>
-                                    <Link href="/login" className="topbar-dropdown-item">Login</Link>
-                                    <Link href="/register" className="topbar-dropdown-item">Register</Link>
-                                </>
-                            )}
+                        <div className="topbar-dropdown" ref={dashboardDropdownRef}>
+                            <a href="#" className="topbar-dropdown-toggle" onClick={(e) => { e.preventDefault(); setIsMyDashboardMobileOpen(!isMyDashboardMobileOpen); }}>
+                                <small className="topbar-dropdown-text"><i className="fa fa-home me-2"></i>My Dashboard</small>
+                            </a>
+                            <div className={`mobile-topbar-collapsible-menu ${isMyDashboardMobileOpen ? 'open' : ''}`}>
+                                {isAuthenticated ? (
+                                    <>
+                                        {user.role === "admin" && (
+                                            <Link href="/admin/dashboard" className="topbar-dropdown-item">Admin Dashboard</Link>
+                                        )}
+                                        <Link href="/profile" className="topbar-dropdown-item">My Account</Link>
+                                        <Link href="/orders/user" className="topbar-dropdown-item">My Orders</Link>
+                                        <a href="#" className="topbar-dropdown-item" onClick={() => dispatch(logout())}>Log Out</a>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link href="/login" className="topbar-dropdown-item">Login</Link>
+                                        <Link href="/register" className="topbar-dropdown-item">Register</Link>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
             </div>
@@ -563,27 +625,30 @@ const Navbar = ({ siteLogoUrl }) => {
                                 {isMobileMenuOpen ? <CloseIcon /> : <span className="fa fa-bars fa-1x"></span>}
                             </button>
                             <div ref={mobileMenuRef} className={`navbar-main-links-collapse ${isMobileMenuOpen ? 'open' : ''}`}>
-                                <div className="navbar-nav py-0">
-                                    {/* Existing navLinks */}
+                                <div className="navbar-nav py-0 flex-col lg:flex-row">
                                     {navLinks.map((link, index) => (
                                         <React.Fragment key={index}>
                                             {link.dropdown ? (
-                                                <div className="nav-item dropdown">
-                                                    <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">{link.text}</a>
-                                                    <div className="navbar-main-links-dropdown-menu">
+                                                <div className="nav-item dropdown" ref={openDropdown === index ? dropdownRef : null}>
+                                                    <a href="#" className={`nav-link dropdown-toggle ${activeLinkIndex === index ? 'active' : ''}`} onClick={() => { handleDropdownToggle(index); handleLinkClick(index); }}>
+                                                        {link.text}
+                                                        {link.dropdown && <ArrowDropDownIcon />}
+                                                    </a>
+                                                    <div className={`navbar-main-links-dropdown-menu ${openDropdown === index ? 'show' : ''}`}>
                                                         {link.dropdown.map((item, itemIndex) => (
-                                                            <a href={item.href} key={itemIndex} className="dropdown-item">{item.text}</a>
+                                                            <Link href={item.href} key={itemIndex} className={`dropdown-item ${activeLinkIndex === index ? 'active' : ''}`} onClick={() => handleLinkClick(index)}>{item.text}</Link>
                                                         ))}
                                                     </div>
                                                 </div>
                                             ) : (
                                                 <div className="nav-item">
-                                                    <Link href={link.href} className="nav-link">{link.text}</Link>
+                                                    <Link href={link.href} className={`nav-link ${activeLinkIndex === index ? 'active' : ''}`} onClick={() => handleLinkClick(index)}>{link.text}</Link>
                                                 </div>
                                             )}
                                         </React.Fragment>
                                     ))}
-                                </div>                                <a href="#" className="btn btn-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0"><i className="fa fa-mobile-alt me-2"></i> 01516143874</a>
+                                </div>
+                                <a href="#" className="btn btn-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0"><i className="fa fa-mobile-alt me-2"></i> 01516143874</a>
                             </div>
                         </div>
                     </div>

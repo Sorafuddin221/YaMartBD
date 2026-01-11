@@ -582,121 +582,28 @@
 
 .navbar-main-links-dropdown-menu {
     position: absolute;
+    top: 100%;
+    left: 0;
     z-index: 1000;
-    display: none;
+    display: none; /* Hidden by default, controlled by .show class */
     min-width: 10rem;
-    padding: .5rem 0;
-    margin: 0;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0; /* Adjusted margin for slight spacing from parent */
     font-size: 1rem;
-    color: #212529;
+    color: #212529; /* Dark text color */
     text-align: left;
     list-style: none;
-    background-color: #fff;
+    background-color: #fff; /* White background */
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
+    border-radius: 0.25rem; /* Standard border-radius */
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.175); /* Soft shadow for depth */
+    transition: all 0.2s ease-in-out; /* Smooth transition for appearance */
 }
 
-.navbar-main-links-dropdown:hover .navbar-main-links-dropdown-menu {
-    display: block;
+.navbar-main-links-dropdown-menu.show { 
+    display:block;
 }
-
-.navbar-main-link {
-    display: block;
-    padding: 18px 15px;
-    font-weight: 500;
-    font-family: 'Roboto', sans-serif;
-    font-size: 17px;
-    color: hsla(0,0%,100%,.55);
-    transition: .5s;
-    text-decoration: none;
-}
-
-.navbar-main-link:hover {
-    color: #fff;
-}
-
-.navbar-mobile-categories-dropdown {
-    display: block;
-}
-
-@media (min-width: 992px) {
-    .navbar-mobile-categories-dropdown {
-        display: none;
-    }
-}
-
-.navbar-contact-button {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    background-color: #f92400;
-    border: 1px solid #f92400;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border-radius: 50rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    margin-bottom: 1rem;
-}
-
-@media (min-width: 992px) {
-    .navbar-contact-button {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        margin-bottom: 0;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .navbar-contact-button {
-        margin-bottom: 1rem;
-    }
-}
-
-.navbar-contact-button:hover {
-    color: #fff;
-    background-color: #e62200;
-    border-color: #e62200;
-}
-
-.navbar-contact-button-icon {
-    margin-right: 0.5rem;
-}
-
-.navbar-mobile-brand {
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    white-space: nowrap;
-    text-decoration: none;
-    display: block;
-}
-
-@media (min-width: 992px) {
-    .navbar-mobile-brand {
-        display: none;
-    }
-}
-
-.navbar-mobile-brand-title {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #f92400;
-    margin: 0;
-}
-
-.navbar-mobile-brand-icon {
-    color: #fff;
-    margin-right: 0.5rem;
-}
-
 /* Custom styles for nav menu items */
 .navbar-main-links-nav .nav-item .nav-link {
     padding: 18px 15px;
@@ -731,21 +638,64 @@
 
 
 /* Specific styling for dropdown menus within the navbar (both main and mobile category) */
-.navbar-main-links-dropdown-menu,
-.dropdown-menu {
+/* The general .dropdown-menu class might be used elsewhere, ensure specific targeting for navbar */
+.dropdown-menu { /* This targets generic dropdown menus, keep it. */
     border-radius: .25rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
 }
 
 /* Ensure dropdown items match template's style */
 .dropdown-item {
-    color: #212529; /* Dark text color for dropdown items */
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem; /* More generous padding for clickable area */
+    clear: both;
+    font-weight: 400;
+    color: #212529; /* Dark text color */
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-    color: #1e2125;
-    background-color: #e9ecef;
+    color: #1e2125; /* Slightly darker text on hover/focus */
+    background-color: #e9ecef; /* Light grey background on hover/focus */
+}
+ .navbar-contact-button:hover {
+    background-color: #e68a00;
+    border-color: #e68a00;
+}
+.navbar-contact-button-icon { 
+    margin-right: 0.5rem;
+}
+.navbar-mobile-brand {
+     white-space: nowrap;
+    margin-right: 1rem;
+    display: block;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+@media (min-width: 992px) {
+    .navbar-mobile-brand {
+        display: none !important;
+    } }
+.navbar-mobile-brand-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+.navbar-mobile-brand-icon {
+    color: #f92400;
+    margin-right: 0.5rem;
 }
 
 /* Styles for mobile "My Dashboard" collapsible sub-menu */
@@ -1242,3 +1192,74 @@
         gap: 10px; /* Reduce gap on smaller screens */
     }
 }
+@media (max-width: 390px) {
+.navbar-main-row {
+    padding-left: 1rem; /* equivalent to px-2 */
+    padding-right: 1rem; /* equivalent to px-2 */
+}
+}
+.navbar-main-links-dropdown-menu.show {
+    display: block;
+}
+
+.nav-item.dropdown {
+position: relative;    
+}
+
+
+.navbar-main-links-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #1e2125;
+    background-color: #e9ecef;
+}
+@media (max-width: 991.98px) {
+    .navbar-main-links-dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .dropdown-item {
+        padding: 10px 15px;
+    }
+}
+
+
+

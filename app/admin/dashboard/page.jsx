@@ -132,6 +132,13 @@ function DashboardPage() {
                                 General Settings
                             </Link>
                         </div>
+                        <div className="nav-section">
+                            <h3>Navigation</h3>
+                            <Link href="/admin/navitems" className={isActive("/admin/navitems") ? "active-link" : ""}>
+                                <DashboardIcon className='nav-icon' /> {/* Reusing DashboardIcon, can be changed */}
+                                Manage Navigation
+                            </Link>
+                        </div>
                     </nav>
                 </div>
                 <div className="main-content">

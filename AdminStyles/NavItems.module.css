@@ -1,0 +1,150 @@
+/* AdminStyles/NavItems.module.css */
+
+.navItemsContainer {
+    padding: 2rem;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.navItemsContainer h1, .navItemsContainer h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.navItemForm {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+}
+
+.navItemForm input,
+.navItemForm select {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navItemForm input:focus,
+.navItemForm select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+}
+
+.formActions button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formActions button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+}
+
+.formActions button[type="submit"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.formActions button[type="button"] {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.formActions button[type="button"]:hover {
+    background-color: #bdc3c7;
+    transform: translateY(-2px);
+}
+
+.navItemList {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navItem {
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.navItem:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navItem[data-is-dragging="true"] {
+    background-color: #e9f5ff;
+}
+
+.navItemContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dragHandle {
+    cursor: grab;
+    color: #95a5a6;
+}
+
+.navItemDetails {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.navItemDetails span {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.navItemActions button {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.navItemActions .editButton:hover {
+    color: #3498db;
+}
+
+.navItemActions .deleteButton:hover {
+    color: #e74c3c;
+}
+
+.subItemsContainer {
+    margin-left: 2rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid #e9ecef;
+    margin-top: 0.5rem;
+}

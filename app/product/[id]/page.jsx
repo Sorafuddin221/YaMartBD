@@ -27,14 +27,43 @@ export async function generateMetadata({ params }) {
   let product = null;
   try {
     // Fetch product directly using Mongoose
-    product = await ProductModel.findById(id);
+    product = await ProductModel.findById(id).populate('category');
   } catch (error) {
     console.error("Error fetching product in generateMetadata:", error);
   }
 
+  if (!product) {
+    return {
+      title: "Product not found",
+      description: "The product you are looking for does not exist.",
+    }
+  }
+
+  const keywords = [product.name, product.category?.name, ...product.name.split(' '), ...product.description.split(' ').slice(0, 10)];
+
   return {
-    title: product ? product.name : "Product not found",
-    description: product ? product.description : "The product you are looking for does not exist.",
+    title: product.name,
+    description: product.description,
+    keywords: keywords,
+    openGraph: {
+        title: product.name,
+        description: product.description,
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/product/${product._id}`,
+        images: [
+            {
+                url: product.image[0]?.url || '/og-image.png',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        type: 'article',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: product.name,
+        description: product.description,
+        images: [product.image[0]?.url || '/twitter-image.png'],
+    },
   }
 }
 

@@ -46,11 +46,11 @@ function Footer() {
         {/*section 4*/}
         <div className="footer-section about">
           <h3>About</h3>
-          <p>Welcome to My E-Shop! We started this journey with a simple mission: to provide high-quality products that bring joy and convenience to your daily life.</p>
+          <p>Welcome to My YaMart BD! We started this journey with a simple mission: to provide high-quality products that bring joy and convenience to your daily life.</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2026 YaMartBD all right resered </p>
+        <p>CopyRight &copy; 2026 YaMartBD all right reserved </p>
       </div>
     </footer>
   )

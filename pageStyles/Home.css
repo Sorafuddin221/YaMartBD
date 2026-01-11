@@ -68,7 +68,7 @@
 
 @media (max-width: 568px) {
   .hero-section-wrapper {
-    margin-top: 3rem; /* Further adjust margin for very small screens */
+    margin-top: .1rem; /* Further adjust margin for very small screens */
   }
 
   .main-slider-container,
