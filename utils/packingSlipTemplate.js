@@ -40,7 +40,7 @@ export const getPackingSlipHTML = (order, settings) => {
                 margin-bottom: 30px;
             }
             .header h1 {
-                font-size: 2.5em;
+                font-size: 2.0em;
                 margin: 0;
                 color: #2c3e50;
             }
@@ -98,9 +98,9 @@ export const getPackingSlipHTML = (order, settings) => {
         <div class="container">
             <div class="header">
                 <div class="company-details">
-                    ${settings.siteLogoUrl ? `<img src="${settings.siteLogoUrl}" alt="YaMart BD" style="max-height: 80px; margin-bottom: 10px;">` : ''}
+                    ${settings.siteLogoUrl ? `<img src="${settings.siteLogoUrl}" alt="YaMart BD" style="max-height: 50px; margin-bottom: 10px;">` : ''}
                     <p>${settings.siteTitle}</p>
-                    <p>123 Main St, Anytown, USA 12345</p>
+                    <p>Gazipur ,Dhaka,Bangladesh</p>
                 </div>
                 <h1>Packing Slip</h1>
                 <div class="order-details">
