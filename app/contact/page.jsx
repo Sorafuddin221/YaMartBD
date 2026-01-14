@@ -70,15 +70,15 @@ function ContactUs() {
           <h2>Our Address</h2>
           <div className="address-item">
             <LocationOnIcon className="icon" />
-            <p>123 Main Street, Anytown, USA 12345</p>
+            <p>Gazipur,Dhaka,Bangladesh</p>
           </div>
           <div className="address-item">
             <PhoneIcon className="icon" />
-            <p>+1 (555) 123-4567</p>
+            <p>01516143874</p>
           </div>
           <div className="address-item">
             <EmailIcon className="icon" />
-            <p>contact@example.com</p>
+            <p>yamartbd@gmail.com</p>
           </div>
         </div>
       </div>

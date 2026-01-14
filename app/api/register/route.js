@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import connectMongoDatabase from '@/lib/db';
 import User from '@/models/userModels';
 import { sendToken } from '@/utils/jwtToken';
-import { v2 as cloudinary } from 'cloudinary';
+import cloudinary from '@/lib/cloudinary';
 import HandleError from '@/utils/handleError';
 
 export async function POST(req) {
