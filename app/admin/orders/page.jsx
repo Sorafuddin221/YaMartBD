@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '@/AdminStyles/OrdersList.css';
 import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
@@ -13,10 +13,17 @@ import { toast } from 'react-toastify';
 function OrdersListPage() {
     const { orders, loading, error, success, message } = useSelector(state => state.admin);
     const dispatch = useDispatch();
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        dispatch(fetchAllOrders());
-    }, [dispatch]);
+        const handler = setTimeout(() => {
+            dispatch(fetchAllOrders(searchQuery));
+        }, 500);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [dispatch, searchQuery]);
 
     const handleDelete = (id) => {
         const confirm = window.confirm("Are you sure you want to delete this order?");
@@ -40,10 +47,23 @@ function OrdersListPage() {
         }
     }, [dispatch, error, success, message]);
 
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
     if (!orders || orders.length === 0) {
         return (
             <div className="no-orders-container">
                 <p>No Orders Found</p>
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Search by Order ID"
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        className="search-input"
+                    />
+                </div>
             </div>
         );
     }
@@ -55,6 +75,15 @@ function OrdersListPage() {
                     <PageTitle title="All Orders" />
                     <div className='ordersList-container'>
                         <h1 className="ordersList-title">All Orders</h1>
+                        <div className="search-container">
+                            <input
+                                type="text"
+                                placeholder="Search by Order ID"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                                className="search-input"
+                            />
+                        </div>
                         <div className="ordersList-table-container">
                             <table className="ordersList-table">
                                 <thead>
@@ -68,7 +97,7 @@ function OrdersListPage() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {orders && orders.map((order, index) => (
+                                    {orders.map((order, index) => (
                                         <tr key={order._id}>
                                             <td>{index + 1}</td>
                                             <td>{order._id}</td>
