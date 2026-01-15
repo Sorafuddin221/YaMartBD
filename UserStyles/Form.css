@@ -179,10 +179,25 @@
     transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
-.form-links a:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
-}
+  .form-links a:hover {
+    color: var(--primary-main);
+  }
+  .remember-me-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .remember-me-group input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .remember-me-group label {
+    font-size: 14px;
+    color: #666;
+  }
+  
 
 .pointer {
     cursor: pointer;

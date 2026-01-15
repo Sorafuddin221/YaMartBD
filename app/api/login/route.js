@@ -9,7 +9,7 @@ export async function POST(req) {
     await connectMongoDatabase();
 
     try {
-        const { email, password } = await req.json();
+        const { email, password, rememberMe } = await req.json();
 
         if (!email || !password) {
             return NextResponse.json({ message: "Please enter email and password" }, { status: 400 });
@@ -27,7 +27,7 @@ export async function POST(req) {
             return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
         }
 
-        const { token, cookieOptions } = sendToken(user, 200);
+        const { token, cookieOptions } = sendToken(user, 200, rememberMe);
 
         const response = NextResponse.json({
             success: true,

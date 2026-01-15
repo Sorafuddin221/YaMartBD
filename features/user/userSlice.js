@@ -19,14 +19,14 @@ return rejectWithValue(error.response?.data || 'Registration failed. Please try 
 })
 
 //login Api 
-export const login=createAsyncThunk('user/login',async({email,password},{rejectWithValue})=>{
+export const login=createAsyncThunk('user/login',async({email,password, rememberMe},{rejectWithValue})=>{
 try{
 const config={
     headers:{
         'content-Type':'application/json'
     }
 }
-const {data}=await api.post('/api/login',{email,password},config)
+const {data}=await api.post('/api/login',{email,password, rememberMe},config)
 return data
 
 }catch(error){

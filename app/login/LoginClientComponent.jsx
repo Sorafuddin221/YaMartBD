@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 function LoginClientComponent() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
     const { error, loading, success, isAuthenticated } = useSelector(state => state.user);
 
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function LoginClientComponent() {
 
     const loginSubmit = (e) => {
         e.preventDefault();
-        dispatch(login({ email: loginEmail, password: loginPassword }));
+        dispatch(login({ email: loginEmail, password: loginPassword, rememberMe }));
     };
 
     useEffect(() => {
@@ -54,10 +55,19 @@ function LoginClientComponent() {
                 <form className="form" onSubmit={loginSubmit}>
                     <h2>Sign In</h2>
                     <div className="input-group">
-                        <input type="email" placeholder='Email' value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
+                        <input type="email" placeholder='Email' value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} autoComplete="email" />
                     </div>
                     <div className="input-group">
-                        <input type="password" placeholder='Password' value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+                        <input type="password" placeholder='Password' value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} autoComplete="current-password" />
+                    </div>
+                    <div className="input-group remember-me-group">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                        />
+                        <label htmlFor="rememberMe">Remember Me</label>
                     </div>
                     <button className="authBtn" type="submit" disabled={loading}>
                         {loading ? 'Signing In...' : 'Sign In'}
