@@ -13,13 +13,11 @@ export async function GET(req) {
             return NextResponse.json({ message: authResult.error.message }, { status: authResult.statusCode });
         }
         const user = authResult.user;
-        const token=cookies(req).get('token')?.value || null;
 
 
         return NextResponse.json({
             success: true,
             user,
-            token
         }, { status: 200 });
 
     } catch (error) {

@@ -79,13 +79,13 @@ function RegisterPage() {
                 <form className="form" onSubmit={registerSubmit} encType='multipart/form-data'>
                     <h2>Sign Up</h2>
                     <div className="input-group">
-                        <input type="text" placeholder='Username' name="name" value={name} onChange={registerDataChange} />
+                        <input type="text" placeholder='Username' name="name" value={name} onChange={registerDataChange} autoComplete="username" />
                     </div>
                     <div className="input-group">
-                        <input type="email" placeholder='Email' name="email" value={email} onChange={registerDataChange} />
+                        <input type="email" placeholder='Email' name="email" value={email} onChange={registerDataChange} autoComplete="email" />
                     </div>
                     <div className="input-group">
-                        <input type="password" placeholder='Password' name="password" value={password} onChange={registerDataChange} />
+                        <input type="password" placeholder='Password' name="password" value={password} onChange={registerDataChange} autoComplete="new-password" />
                     </div>
                     <div className="input-group avatar-group">
                         <input className='file-input' type="file" name="avatar" accept='image/' onChange={registerDataChange} />
