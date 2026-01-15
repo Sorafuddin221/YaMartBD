@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '@/AdminStyles/ProductsList.css';
 import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
@@ -12,12 +12,13 @@ import Loader from '@/components/Loader';
 
 
 function ProductsListPage() {
+    const [keyword, setKeyword] = useState('');
     const { products, loading, error, deleting } = useSelector(state => state.admin);
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchAdminProducts());
-    }, [dispatch]);
+        dispatch(fetchAdminProducts(keyword));
+    }, [dispatch, keyword]);
 
     useEffect(() => {
         if (error) {
@@ -41,10 +42,25 @@ function ProductsListPage() {
         }
     };
 
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        dispatch(fetchAdminProducts(keyword));
+    };
+
     if (!products || products.length === 0) {
         return (
             <div className="product-list container">
                 <h1 className="product-list-title">Admin Products</h1>
+                <form onSubmit={handleSearchSubmit} className="search-form">
+                    <input
+                        type="text"
+                        placeholder="Search products..."
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        className="search-input"
+                    />
+                    <button type="submit" className="search-button">Search</button>
+                </form>
                 <p className="no-admin-products">No Products Found</p>
             </div>
         );
@@ -57,6 +73,16 @@ function ProductsListPage() {
                     <PageTitle title="All Products" />
                     <div className="product-list-container">
                         <h1 className="product-list-title">All Products</h1>
+                        <form onSubmit={handleSearchSubmit} className="search-form">
+                            <input
+                                type="text"
+                                placeholder="Search products..."
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                className="search-input"
+                            />
+                            <button type="submit" className="search-button">Search</button>
+                        </form>
                         <div className="table-responsive">
                         <table className="product-table">
                             <thead>

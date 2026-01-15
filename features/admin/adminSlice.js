@@ -3,10 +3,10 @@ import api from "@/utils/api";
 
 
 //fetch all products
-export const fetchAdminProducts = createAsyncThunk('admin/fetchAdminProducts', async (_, { rejectWithValue }) => {
+export const fetchAdminProducts = createAsyncThunk('admin/fetchAdminProducts', async (keyword = '', { rejectWithValue }) => {
     try {
 
-        const { data } = await api.get('/api/admin/products')
+        const { data } = await api.get(`/api/admin/products/search?keyword=${keyword}`)
         return data;
 
     } catch (error) {
@@ -62,11 +62,11 @@ export const deleteProduct = createAsyncThunk('admin/deleteProduct', async (prod
 })
 
 //|Featch All Users
-export const fetchUsers = createAsyncThunk('admin/fetchUsers', async (_, { rejectWithValue }) => {
+export const fetchUsers = createAsyncThunk('admin/fetchUsers', async (keyword = '', { rejectWithValue }) => {
     try {
        
 
-        const { data } = await api.get(`/api/admin/users`)
+        const { data } = await api.get(`/api/admin/users/search?keyword=${keyword}`)
         return data;
 
     } catch (error) {
@@ -114,15 +114,15 @@ export const deleteUser = createAsyncThunk('admin/deleteUser', async (userId, { 
 })
 
 //|Fetch All Orders
-export const fetchAllOrders = createAsyncThunk('admin/fetchAllOrders', async (_, { rejectWithValue }) => {
+export const fetchAllOrders = createAsyncThunk('admin/fetchAllOrders', async (keyword = '', { rejectWithValue }) => {
     try {
-        const { data } = await api.get(`/api/admin/orders`)
+        const { data } = await api.get(`/api/admin/orders/search?keyword=${keyword}`);
         return data;
 
     } catch (error) {
-        return rejectWithValue(error.response?.data || 'Failed to Delete user')
+        return rejectWithValue(error.response?.data || 'Failed to fetch orders');
     }
-})
+});
 
 //|Delete order
 export const deleteOrder = createAsyncThunk('admin/deleteOrder', async (id, { rejectWithValue }) => {

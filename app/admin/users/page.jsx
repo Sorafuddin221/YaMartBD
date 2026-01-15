@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '@/AdminStyles/UsersList.css';
 import PageTitle from '@/components/PageTitle';
 import Link from 'next/link';
@@ -12,13 +12,14 @@ import Loader from '@/components/Loader';
 import { useRouter } from 'next/navigation';
 
 function UsersListPage() {
+    const [keyword, setKeyword] = useState('');
     const { users, loading, error, message } = useSelector(state => state.admin);
     const dispatch = useDispatch();
     const router = useRouter();
 
     useEffect(() => {
-        dispatch(fetchUsers());
-    }, [dispatch]);
+        dispatch(fetchUsers(keyword));
+    }, [dispatch, keyword]);
 
     useEffect(() => {
         if (error) {
@@ -33,6 +34,11 @@ function UsersListPage() {
         if (confirm) {
             dispatch(deleteUser(userId));
         }
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        dispatch(fetchUsers(keyword));
     };
 
     useEffect(() => {
@@ -56,6 +62,16 @@ function UsersListPage() {
                     <PageTitle title="All Users" />
                     <div className="usersList-container">
                         <h1 className="usersList-title">ALL Users</h1>
+                        <form onSubmit={handleSearchSubmit} className="search-form">
+                            <input
+                                type="text"
+                                placeholder="Search users by name or email..."
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                className="search-input"
+                            />
+                            <button type="submit" className="search-button">Search</button>
+                        </form>
                         <div className="usersList-table-container">
                             <table className="usersList-table">
                                 <thead>
