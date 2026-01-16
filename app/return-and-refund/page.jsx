@@ -143,7 +143,7 @@ const ReturnAndRefund = () => {
         <p>
           <strong>YaMart BD</strong>
           <br />
-          Naogaon, Rajshahi, Bangladesh
+          Gazipur,Dhaka, Bangladesh
           <br />
           Email: yamartbd@gmail.com
           <br />

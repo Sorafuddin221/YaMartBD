@@ -114,26 +114,49 @@
 .quantity-button {
     width: 40px;
     height: 40px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+    border: 1px solid var(--border-color); /* Use theme variable */
+    background-color: var(--background); /* Use theme variable */
+    color: var(--foreground); /* Use theme variable for text color */
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Slightly larger for prominence */
+    font-weight: 600;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease-in-out;
+    display: flex; /* For perfect centering */
+    justify-content: center; /* For perfect centering */
+    align-items: center; /* For perfect centering */
 }
 
 .quantity-button:hover {
-    background-color: #f0f0f0;
+    background-color: var(--primary-light); /* Consistent hover effect */
+    border-color: var(--primary-light); /* Consistent hover effect */
 }
 
 .quantity-value {
     width: 60px;
     height: 40px;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color); /* Use theme variable */
     border-radius: 4px;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Consistent font size */
     font-weight: 500;
+    background: var(--background); /* Use theme variable */
+    color: var(--foreground); /* Use theme variable */
+    transition: all 0.2s ease-in-out;
+    -moz-appearance: textfield; /* Remove number input arrows in Firefox */
+}
+
+/* Remove number input arrows for Webkit browsers (Chrome, Safari) */
+.quantity-value::-webkit-outer-spin-button,
+.quantity-value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-value:focus {
+    outline: none;
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 2px rgba(var(--primary-dark-rgb), 0.2); /* Consistent focus effect */
 }
 
 .add-to-cart-btn {

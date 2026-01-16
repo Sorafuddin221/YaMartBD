@@ -276,7 +276,7 @@ function ProductDetailsClientComponent({ initialProduct, productId }) {
                             </div>
                         )}
 
-                        {mounted && product.stock > 0 && (<> <div className="quantity-controls">
+                        {product.stock > 0 && (<> <div className="quantity-controls">
                             <span className="quantity-label">quantity</span>
                             <button className="quantity-button" onClick={decreaseQuantity}>-</button>
                             <input type="text" value={quantity} readOnly className="quantity-value" />

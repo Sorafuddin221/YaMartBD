@@ -116,26 +116,53 @@
   gap: 0.5rem;
 }
 
-.quantity-button {
+.quantity-button-decrease-btn,
+.quantity-button-increase-btn {
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color); /* Using a variable for consistency */
   background: var(--background);
+  color: var(--foreground); /* Ensure button text color is clear */
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.2rem; /* Make + / - more prominent */
+  font-weight: 600;
+  display: flex; /* For perfect centering */
+  justify-content: center; /* For perfect centering */
+  align-items: center; /* For perfect centering */
 }
 
-.quantity-button:hover {
-  color:var(--text-primary)
+.quantity-button-decrease-btn:hover,
+.quantity-button-increase-btn:hover {
+  background-color: var(--primary-light); /* Stronger hover feedback */
+  color: var(--text-primary); /* Keep text readable on hover */
+  border-color: var(--primary-light);
 }
 
 .quantity-input {
   width: 50px;
   height: 32px;
   text-align: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color); /* Using a variable */
   border-radius: 6px;
+  background: var(--background);
+  color: var(--foreground);
+  transition: all 0.2s ease-in-out;
+  -moz-appearance: textfield; /* Remove number input arrows in Firefox */
+}
+
+/* Remove number input arrows for Webkit browsers (Chrome, Safari) */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 2px rgba(var(--primary-dark-rgb), 0.2); /* Subtle focus effect */
 }
 
 .item-total {

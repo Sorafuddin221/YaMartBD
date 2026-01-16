@@ -4,6 +4,7 @@
 :root {
   --primary-main: #4E545C;
   --primary-dark: #1F1E23;
+  --primary-dark-rgb: 31, 30, 35;
   --primary-light: #E1E1E1;
 
   --bg-primary: #1F1E23;
@@ -32,6 +33,7 @@
 html.dark {
   --primary-main: #6B7280; /* Adjust primary colors for dark mode */
   --primary-dark: #1F2937;
+  --primary-dark-rgb: 31, 41, 55;
   --primary-light: #E1E1E1;
 
   --bg-primary: #111827;

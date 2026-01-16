@@ -87,11 +87,11 @@ const cartSlice=createSlice({
             );
 
             if(existingItem){
-                existingItem.quantity += item.quantity
-                state.message=`Updated ${item.name} (${item.color}) quantity in the cart`
+                existingItem.quantity = item.quantity
+                state.message = `Updated ${item.name}${item.color ? ` (${item.color})` : ''} quantity in the cart`;
             }else{
                 state.cartItems.push(item);
-                state.message=`${item.name} (${item.color || 'No Color'}) is added to cart successfully`
+                state.message = `${item.name}${item.color ? ` (${item.color})` : ''} is added to cart successfully`;
             }
             state.loading=false,
             state.error=null,

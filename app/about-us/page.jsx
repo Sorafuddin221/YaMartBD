@@ -52,7 +52,7 @@ function AboutUs() {
             We love to hear from our customers! Follow us on our social media channels to stay updated on our latest products, promotions, and news. Join our community and be a part of the My YaMart family.
           </p>
           <div className="social-links">
-            {/* Add your social media links here */}
+           
             <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
