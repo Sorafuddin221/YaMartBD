@@ -1161,11 +1161,6 @@
         padding: 0.5rem; /* Reduce overall padding */
     }
 
-    .mobile-search-form {
-        /* Consider if flex-wrap is needed, or if reducing padding is enough */
-        /* flex-wrap: wrap; */
-    }
-
     .mobile-search-input {
         padding: 0.5rem 0.5rem; /* Reduced horizontal padding */
         font-size: 0.9rem; /* Slightly smaller font */
@@ -1192,7 +1187,7 @@
         gap: 10px; /* Reduce gap on smaller screens */
     }
 }
-@media (max-width: 390px) {
+@media (max-width: 420px) {
 .navbar-main-row {
     padding-left: 1rem; /* equivalent to px-2 */
     padding-right: 1rem; /* equivalent to px-2 */
