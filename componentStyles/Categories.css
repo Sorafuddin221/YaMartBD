@@ -29,7 +29,7 @@
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--foreground) !important;
+    background-color: black !important;
 }
 
 @media (max-width: 768px) {
