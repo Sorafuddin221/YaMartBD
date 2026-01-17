@@ -25,11 +25,11 @@
 }
 
 .swiper-pagination-bullet {
-    background-color: var(--primary-color) !important;
+    background-color: var(--foreground) !important;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--primary-color) !important;
+    background-color: var(--foreground) !important;
 }
 
 @media (max-width: 768px) {
